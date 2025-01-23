@@ -39,10 +39,10 @@
 
 \begin{multicols}{2}
 \begin{abstract}
-This document provides a basic template for the 2-page labs we will complete each week. Here, briefly summarize what you did and why it might be helpful.
+ This document provides a basic template for the 2-page labs we will complete each week. Here, you should provide a succinct summary about what you did and why it might be helpful.
 \end{abstract}
 
-\noindent \textbf{Keywords:} What topics does the lab cover with respect to class? 
+\indent \textbf{Keywords:} What topics does the lab cover with respect to class? 
 
 \section{Instructions}
 For this lab, you will 
@@ -55,7 +55,49 @@ For this lab, you will
 \item Accept the LAB 1 assignment \href{https://classroom.github.com/assignment-invitations/49ec7c38806e92bfef8bf3094b9b11d3}{here}.
 \item Recreate this document (except put your name/info at the top) to get used to writing in \LaTeX~and to see the types of thing we can do when creating a document to convey statistical information. Make sure to commit and push your work using GitHub desktop as you finish each section. 
 \end{enumerate}
-\textbf{Remark:} You will find the class Sweave cheatsheet to be \emph{incredibly} {\tt(/emph{incredibly})} helpful. 
+
+\noindent \textbf{Remark:} You will find the class Sweave cheatsheet to be \emph{incredibly} \verb|\emph{incredibly}| helpful. 
+\section{Word Processing Tasks}
+\subsection{Centering Text}
+ \begin{center}
+ We can center text in Sweave.
+ \end{center}
+\subsection{Bold, Italics, and Underlining}
+ We can \textbf{bold}, \textit{italicize}, \underline{underline}, and \emph{emphasize} text in
+ Sweave. \\
+\indent Note, I did a column break here so that the list wasn’t broken across columns.
+\columnbreak
+
+\subsection{Lists, and Numbered Lists}
+We can write an unordered list in Sweave.
+ \begin{itemize}\itemsep0em
+ \item first item
+ \item second item
+ \item third item
+ \end{itemize}
+We can write a numbered list in Sweave.
+ \begin{enumerate}[1.]\itemsep0em
+ \item first item
+ \item second item
+ \item third item
+ \end{enumerate}
+We can write a lettered list in Sweave.
+ \begin{enumerate}[a.]\itemsep0em
+ \item first item
+ \item second item
+ \item third item
+ \end{enumerate}
+\subsection{Submissions}
+This part of the midterm is due Sunday November 14 by 5p. I will not accept late submissions. Note that you may use
+this template to help build your introduction and methods
+ sections,and you can use the work you did as a group during the datathon. Still, I expect this submission to be your own summary and extension of that work without collaboration.
+\subsection{Submissions}
+We can write a one line equation that is centered like this 
+\begin{center}
+\[\widehat{y_i} = \beta_0 + \beta_1 x_{1i}+ \beta_2 x_{2i} + \epsilon_i.\]
+\end{center}
+This can be written in the text, as $\widehat{y_i} = \beta_0 + \beta_1 x_{1i}+ \beta_2 x_{2i} + \epsilon_i$ using as well.
+\\ 
 Provide an overarching summary of what you're talking about. In this section, you introduce the idea to the reader, and your goal is to pull them in. What's the mystery you aim to solve?
 
 You want to provide enough background to understand the context of the work. Specifically, what is the question you are addressing? If it applies, describe what information currently exists about this problem, including citations, and explain how the question you're answering complements this work.
