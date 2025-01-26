@@ -57,11 +57,13 @@ For this lab, you will
 \end{enumerate}
 
 \noindent \textbf{Remark:} You will find the class Sweave cheatsheet to be \emph{incredibly} \verb|\emph{incredibly}| helpful. 
+
 \section{Word Processing Tasks}
 \subsection{Centering Text}
  \begin{center}
  We can center text in Sweave.
  \end{center}
+
 \subsection{Bold, Italics, and Underlining}
  We can \textbf{bold}, \textit{italicize}, \underline{underline}, and \emph{emphasize} text in
  Sweave. \\
@@ -87,17 +89,99 @@ We can write a lettered list in Sweave.
  \item second item
  \item third item
  \end{enumerate}
+
 \subsection{Submissions}
 This part of the midterm is due Sunday November 14 by 5p. I will not accept late submissions. Note that you may use
 this template to help build your introduction and methods
  sections,and you can use the work you did as a group during the datathon. Still, I expect this submission to be your own summary and extension of that work without collaboration.
+
 \subsection{Submissions}
 We can write a one line equation that is centered like this 
-\begin{center}
-\[\widehat{y_i} = \beta_0 + \beta_1 x_{1i}+ \beta_2 x_{2i} + \epsilon_i.\]
-\end{center}
-This can be written in the text, as $\widehat{y_i} = \beta_0 + \beta_1 x_{1i}+ \beta_2 x_{2i} + \epsilon_i$ using as well.
-\\ 
+\[\widehat{y_i} = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \beta_3 x_{1i} {x_2i} + \epsilon_i.\]
+This can be written in the text, as $\widehat{y_i} = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \beta_3 x_{1i} {x_2i} + \epsilon_i.$ using as well.\\
+\indent When we need to show multiple steps, we can create a multi-line equation that is centered like this:
+\begin{align*}
+8(x-5)+x&=9(x-5)+5\\
+8x-40+x&=9x-45+5\tag{Distributing}\\
+9x-40&=9x-40\tag{Combining like terms}\\
+9x&=9\tag{Adding 40 to both sides}\\
+x&=x
+\end{align*}
+The equality holds for any x.\\
+\indent Note, I did a page break here so that the next section started on a clean page.
+\newpage
+
+\subsection{Running R Code}
+Codechunks can be entered into Sweave; e.g., here are some comments.
+ <<size='scriptsize'>>=
+ # R code goes here
+ # Output is automatically printed in the pdf
+ @
+\indent Below, you can see that we can do algebra with R. 
+ <<size='scriptsize'>>=
+ 8*(9-5) + 9 # 8(x-5) + x for x=9
+ @
+\indent Below, we show we can produced the code without evalu-ating it. 
+ <<eval=FALSE, size='scriptsize'>>= 
+ 8*(9-5) + 9 # 8(x-5) + x for x=9
+ @
+\indent Alternatively, we can produced the output without the code. 
+ <<echo=FALSE, size='scriptsize'>>=
+ 8*(9-5) + 9
+ @
+\indent We can also call object values from R directly. 
+ <<size='scriptsize'>>=
+ result <- 8*(9-5)+ 9 # 8(x-5) + x for x = 9
+ result.with.error <- result + rnorm(1, mean = 0, sd = 0.1)
+ result.with.error
+ @
+\indent The result is \Sexpr{result.with.error}. Note that I did not type the result, but I used the \verb|\Sexpr{}| command. 
+
+\subsection{Plotting}
+We can also plot with \texttt{R}.
+ <<plot1, eval=FALSE, size='scriptsize'>>=
+ #Plot a histogram of random normally distributed data
+ hist(rexp(100))
+ @
+\begin{figure}[H]
+ \begin{center}
+ %This code is evaluated, but not printed
+ %warning=FALSE and message=FALSE ensure no text is returned as a by product of
+ %printing; this would cause an error in that plot+text is returned instead of
+ %just the plot
+ <<echo=FALSE, warning=FALSE, message=FALSE, fig.dim=c(5,3.5)>>=
+ <<plot1>>
+ @
+ \caption{A histogram of random normally distributed data, $n=100$.}
+ \label{plot1} %we can now reference plot1
+ \end{center}
+\end{figure}
+\columnbreak 
+
+\subsection{Tables}
+Below,we load and take a peek at some data about the death rates per 1000 in Virginia in 1940 \citep{molyneaux1947differences}.
+ <<size='scriptsize'>>=
+ data(VADeaths)
+ head(VADeaths) # Take a peek of the data
+ @
+\indent If we want to print this nicely we can do so using the xtable package \citep{xtable}, which we can reference using the label.
+<<eval=FALSE, size='scriptsize'>>=
+ library(xtable)
+ sleep.table = xtable(VADeaths,
+                      label = "VADeaths.tab",
+                      caption = "Death rates per 1000 in Virginia (1940).")
+ @
+<<echo=FALSE, size='scriptsize'>>=
+ library(xtable)
+ colnames(VADeaths)<-c("Rural Male","Rural Female","Urban Male","Urban Female")
+ VADeaths.table<-xtable(VADeaths,label="VADeath.tab")# we can now reference sleep.tab
+ @
+ <<echo=FALSE, results="asis">>=
+ #placement="H" places table [H]ere,just like plot
+ #include.rowname=FALSE doesn’t print the row numbers in this example
+ print(VADeaths.table,
+ table.placement="H", include.rownames=FALSE, size="small")
+ @
 Provide an overarching summary of what you're talking about. In this section, you introduce the idea to the reader, and your goal is to pull them in. What's the mystery you aim to solve?
 
 You want to provide enough background to understand the context of the work. Specifically, what is the question you are addressing? If it applies, describe what information currently exists about this problem, including citations, and explain how the question you're answering complements this work.
@@ -152,5 +236,4 @@ you cite them in your document, the bibliography section will automatically popu
 \section{Appendix}
 
 If you have anything extra, you can add it here in the appendix. This can include images or tables that don't work well in the two-page setup, code snippets you might want to share, etc.
-
 \end{document}
