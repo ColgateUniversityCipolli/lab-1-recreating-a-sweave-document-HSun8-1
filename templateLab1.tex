@@ -208,11 +208,11 @@ Codechunks can be entered into Sweave; e.g., here are some comments.
 \hldef{result.with.error}
 \end{alltt}
 \begin{verbatim}
-## [1] 41.13271
+## [1] 41.02768
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-\indent The result is 41.132712. Note that I did not type the result, but I used the \verb|\Sexpr{}| command. 
+\indent The result is 41.0276755. Note that I did not type the result, but I used the \verb|\Sexpr{}| command. 
 
 \subsection{Plotting}
 We can also plot with \texttt{R}.
@@ -258,20 +258,22 @@ Below,we load and take a peek at some data about the death rates per 1000 in Vir
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-\indent If we want to print this nicely we can do so using the xtable package \citep{xtable}, which we can reference using the label.
+\indent If we want to print this nicely, we can do so using the xtable package \citep{xtable}, which we can reference using the label (Table \ref{VADeaths.tab}).
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
- \hlkwd{library}\hldef{(xtable)}
- \hldef{sleep.table} \hlkwb{=} \hlkwd{xtable}\hldef{(VADeaths,}
-                      \hlkwc{label} \hldef{=} \hlsng{"VADeaths.tab"}\hldef{,}
-                      \hlkwc{caption} \hldef{=} \hlsng{"Death rates per 1000 in Virginia (1940)."}\hldef{)}
+\hlkwd{library}\hldef{(xtable)}
+\hldef{sleep.table} \hlkwb{=} \hlkwd{xtable}\hldef{(VADeaths,}
+                    \hlkwc{label} \hldef{=} \hlsng{"VADeaths.tab"}\hldef{,}
+                    \hlkwc{caption} \hldef{=} \hlsng{"Death rates per 1000 in Virginia (1940)."}\hldef{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
+\begin{table}[H]
+ \begin{center}
 % latex table generated in R 4.4.2 by xtable 1.8-4 package
-% Tue Jan 28 12:27:25 2025
+% Wed Jan 29 17:38:27 2025
 \begin{table}[H]
 \centering
 \begingroup\small
@@ -287,50 +289,18 @@ Rural Male & Rural Female & Urban Male & Urban Female \\
    \hline
 \end{tabular}
 \endgroup
-\label{VADeath.tab}
+\label{VADeaths.tab}
 \end{table}
 
-Provide an overarching summary of what you're talking about. In this section, you introduce the idea to the reader, and your goal is to pull them in. What's the mystery you aim to solve?
-
-You want to provide enough background to understand the context of the work. Specifically, what is the question you are addressing? If it applies, describe what information currently exists about this problem, including citations, and explain how the question you're answering complements this work.
-
-Provide a roadmap of the structure of the paper. 
-
-\subsection{Intro Subsection}
-You might need/want to discuss the topics in subsections. Or, you may have multiple questions.
-
-
-\section{Methods}
-Describe the data you are working with, if applicable. Describe the specific process you will follow to answer the question at hand. This does not mean you should write something like this.
-\begin{quote}
-\textit{I did this and then I did that and then I did this other thing and then..., and then..., and then...}
-\end{quote}
-Instead, it should provide a clear and concise narrative that flows from the problem specification in the Introduction to how you will approach answering it. This is where I would expect to see some citations for \texttt{R} packages you will use to conduct the statistical analysis reported in the Results section.
-
-
-\subsection{Methods Subsection}
-Much like the Introduction, subsections can be helpful for the Methods section. For example, you might describe data collection and the statistical analyses of the collected data in different subsections. Or, you may have different questions that require distinct methods. 
-
-\section{Results}
-Tie together the Introduction -- where you introduce the problem at hand -- and the methods --  what you propose to do to answer the question. Present your data, the results of your analyses, and how each reported aspect contributes to answering the question. This section should include table(s), statistic(s), and graphical displays. Make sure to put the results in a sensible order and that each result contributes a logical and developed solution. It should not just be a list. Avoid being repetitive. 
-
-\subsection{Results Subsection}
-Subsections can be helpful for the Results section, too. This can be particularly helpful if you have different questions to answer. 
-
-
-\section{Discussion}
- You should objectively evaluate the evidence you found in the data. Do not embellish or wish-terpet (my made-up phase for making an interpretation you, or the researcher, wants to be true without the data \emph{actually} supporting it). Connect your findings to the existing information you provided in the Introduction.
-
-Finally, provide some concluding remarks that tie together the entire paper. Think of the last part of the results as abstract-like. Tell the reader what they just consumed -- what's the takeaway message?
+% I'm still not quite sure this is right...
+  \caption{Death Rates per 1000 in Virginia (1940)}
+  \label{VADeaths.tab}
+ \end{center}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{2em}
-
-\noindent\textbf{Bibliography:} Note that when you add citations to your bib.bib file \emph{and}
-you cite them in your document, the bibliography section will automatically populate here.
-
 \begin{tiny}
 \bibliography{bib}
 \end{tiny}
@@ -342,6 +312,5 @@ you cite them in your document, the bibliography section will automatically popu
 \newpage
 \onecolumn
 \section{Appendix}
-
-If you have anything extra, you can add it here in the appendix. This can include images or tables that don't work well in the two-page setup, code snippets you might want to share, etc.
+Below is a table from a paper I'm currently working on. Without the analysis object in \texttt{R}, I have to create this myself.
 \end{document}
