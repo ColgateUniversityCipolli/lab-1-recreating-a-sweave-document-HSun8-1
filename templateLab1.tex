@@ -78,10 +78,10 @@
 \title{Lab 1 -- MATH 240 -- Computational Statistics}
 
 \author{
-  First Author \\
-  Affiliation  \\
-  Department  \\
-  {\tt email@domain}
+  Henry Sun \\
+  Colgate University  \\
+  Department of Mathematics\\
+  {\tt hlsun@colgate.edu}
 }
 
 \date{}
@@ -156,7 +156,7 @@ This can be written in the text, as $\widehat{y_i} = \beta_0 + \beta_1 x_{1i} + 
 8x-40+x&=9x-45+5\tag{Distributing}\\
 9x-40&=9x-40\tag{Combining like terms}\\
 9x&=9\tag{Adding 40 to both sides}\\
-x&=x
+x&=x\tag{Dividing both sides by 9}
 \end{align*}
 The equality holds for any x.\\
 \indent Note, I did a page break here so that the next section started on a clean page.
@@ -208,11 +208,11 @@ Codechunks can be entered into Sweave; e.g., here are some comments.
 \hldef{result.with.error}
 \end{alltt}
 \begin{verbatim}
-## [1] 41.02768
+## [1] 41.15806
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-\indent The result is 41.0276755. Note that I did not type the result, but I used the \verb|\Sexpr{}| command. 
+\indent The result is 41.1580626. Note that I did not type the result, but I used the \verb|\Sexpr{}| command. 
 
 \subsection{Plotting}
 We can also plot with \texttt{R}.
@@ -273,7 +273,7 @@ Below,we load and take a peek at some data about the death rates per 1000 in Vir
 \begin{table}[H]
  \begin{center}
 % latex table generated in R 4.4.2 by xtable 1.8-4 package
-% Wed Jan 29 17:38:27 2025
+% Wed Jan 29 21:00:39 2025
 \begin{table}[H]
 \centering
 \begingroup\small
@@ -313,4 +313,42 @@ Rural Male & Rural Female & Urban Male & Urban Female \\
 \onecolumn
 \section{Appendix}
 Below is a table from a paper I'm currently working on. Without the analysis object in \texttt{R}, I have to create this myself.
+\begin{table}[H]
+ \begin{center}
+ \begin{tabular}{lrrrrr}\\\hline
+ Terms &SS(Type III) &df &F &p-value &p\\\hline
+ (Intercept) &4.95 &1.00 &5.37 &0.0209 & \\
+ White-Poor (\textit{Z}) &3.17 &1.00 &3.44 &0.0642  &0.02\\
+ Zero-Sum (\textit{Z}) &17.96 &1.00 &19.48 &<0.0001 &0.03\\
+ Education (\textit{Z}) &0.39 &1.00 &0.42 &0.5161 &0.00\\
+ Income (\textit{Z}) &0.16 &1.00 &0.17 &0.6817 &0.00\\
+ Democrat &9.60 &1.00 &10.42 &0.0013 &0.02\\
+ Black-Poor (\textit{Z}) &1.92 &1.00 &2.08 &0.1496 &0.00\\
+ White-Poor (\textit{Z})$\times$Zero-Sum (\textit{Z}) &7.96 &1.00 &8.63 &0.0034 &0.01\\
+ Residuals &506.92 &550.00 & & & \\\hline
+ \end{tabular} 
+ \label{full.sleep.tab}
+ \caption{ANOVA table for Case Study I.}
+ \end{center}
+ \end{table}
+ 
+The \texttt{palmerpenguins} package for \texttt{R} \citep{palmerpenguins} provides data on adult foraging penguins near Palmer Station, Antarctica. Figure \ref{penguinplot} is too big to fit nicely in our column-based-template above, so I've place it here in the abstract by saving it and presenting it scaled to 0.75. \\
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hldef{(palmerpenguins)}
+\hlkwd{pdf}\hldef{(}\hlsng{"figure/penguins.pdf"}\hldef{,} \hlkwc{width} \hldef{=} \hlnum{8}\hldef{,} \hlkwc{height} \hldef{=} \hlnum{5}\hldef{)}
+\hlkwd{plot}\hldef{(penguins)}
+\hlkwd{dev.off}\hldef{()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.75]{figure/penguins.pdf}
+\caption{Data on adult foraging penguins near Palmer Station, Antarctica}
+\label{penguinplot}
+\end{center}
+\end{figure}
 \end{document}
+
